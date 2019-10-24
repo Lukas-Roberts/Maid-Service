@@ -1,0 +1,2 @@
+class Maid < ApplicationRecord
+end

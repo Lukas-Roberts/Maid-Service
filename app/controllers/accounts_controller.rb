@@ -5,8 +5,9 @@ class AccountsController < ApplicationController
     end
 
     def create
-        if params[:password] == params[:password_confirmation] && params[:accountable_type]
+        if params[:password] == params[:password_confirmation]
             @account = Account.create(account_params)
+            session[:account_id] = @account.id
             if @account.accountable_type == "maid"
                 redirect_to new_maid_path
             else

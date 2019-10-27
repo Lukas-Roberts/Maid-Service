@@ -16,7 +16,7 @@
     <%= f.radio_button :accountable_type, 'maid' %><br><br>
 
     <%= f.label :accountable_type, "Sign up as a Client" %>
-    <%= f.radio_button :accountable_type, 'client' %><br><br>
+    <%= f.radio_button :accountable_type, 'client', checked: "checked" %><br><br>
 
     <%= f.submit "Create account!" %>
 <% end %>

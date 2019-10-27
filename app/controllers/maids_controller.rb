@@ -1,0 +1,3 @@
+class MaidsController < ApplicationController
+
+end

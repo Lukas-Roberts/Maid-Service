@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
 
   resources :accounts, only: [:new, :create]
-  resources :maids, only: [:new, :create]
+  resources :maids, only: [:new, :create, :edit]
+  resources :clients, only: [:new, :create, :edit]
 
 end

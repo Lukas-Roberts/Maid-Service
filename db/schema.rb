@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2019_10_24_222758) do
   create_table "clients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.string "city"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,6 +35,8 @@ ActiveRecord::Schema.define(version: 2019_10_24_222758) do
   create_table "maids", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.string "city"
+    t.string "state"
     t.string "experience"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_10_24_222758) do
 
   create_table "residences", force: :cascade do |t|
     t.string "address"
+    t.string "city"
+    t.string "state"
     t.integer "number_of_bedrooms"
     t.integer "number_of_bathrooms"
     t.string "client_id"

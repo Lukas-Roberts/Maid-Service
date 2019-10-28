@@ -20,3 +20,13 @@
 
     <%= f.submit "Create account!" %>
 <% end %>
+
+<% if @account.errors.any? %>
+    <ul>
+        <% @account.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= link_to "logout", logout_path %>

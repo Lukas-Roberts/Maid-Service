@@ -1,2 +1,28 @@
 <h2>Welcome, <%= @client.first_name %>!</h2>
-<%= link_to "Add a residence", %>
+<%= link_to "Add a residence", new_residence_path %>
+
+<table>
+<% if @residences %>
+    <thead>
+        <tr>
+            <th colspan="4"></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><strong>Address</strong></td>
+        <td><strong>Bedrooms</strong></td>
+        <td><strong>Bathrooms</strong></td>
+        <td><strong>Schedule a Cleaning</strong></td>
+    </tr>
+    <% @residences.each do |res| %>
+        <tr>
+            <td><%= res.address %></td>
+            <td><%= res.number_of_bedrooms %></td>
+            <td><%= res.number_of_bathrooms %></td>
+            <td><%= link_to "Get Cleaned", new_schedule_path %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+    

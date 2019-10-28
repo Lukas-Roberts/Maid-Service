@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#logout', as: 'logout'
 
   resources :accounts, only: [:new, :create]
   resources :maids, only: [:new, :create, :edit, :show]
   resources :clients, only: [:new, :create, :edit, :show]
 
+  root 'sessions#new'
 end

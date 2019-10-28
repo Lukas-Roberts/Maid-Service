@@ -17,6 +17,7 @@ class ClientsController < ApplicationController
 
     def show
         @client = Client.find(params[:id])
+        @residences = Residence.where(["client_id = :client_id", {client_id: params[:id]}])
     end
 
     private

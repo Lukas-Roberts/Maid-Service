@@ -18,7 +18,7 @@ class MaidsController < ApplicationController
     private 
     
     def maid_params
-        params.require(:maid).permit(:first_name, :last_name, :experience)
+        params.require(:maid).permit(:first_name, :last_name, :city, :state, :experience)
     end
 
 end

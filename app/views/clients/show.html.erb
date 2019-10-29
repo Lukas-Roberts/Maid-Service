@@ -1,29 +1,24 @@
-<%= link_to "Add a residence", new_residence_path %>
-<%= link_to "Edit your information", edit_client_path %>
+<p><%= link_to "Edit your information", edit_client_path %></p>
 
 <table>
 <% if @residences %>
-    <thead>
-        <tr>
-            <th colspan="4"></th>
-        </tr>
-    </thead>
     <tbody>
     <tr>
-        <td><strong>Address</strong></td>
-        <td><strong>Bedrooms</strong></td>
-        <td><strong>Bathrooms</strong></td>
-        <td><strong>Schedule a Cleaning</strong></td>
+        <td style="text-align:center"><strong>Address</strong></td>
+        <td style="text-align:center"><strong>Bedrooms</strong></td>
+        <td style="text-align:center"><strong>Bathrooms</strong></td>
+        <td style="text-align:center"><strong>Schedule a Cleaning</strong></td>
     </tr>
     <% @residences.each do |res| %>
         <tr>
-            <td><%= res.address %></td>
-            <td><%= res.number_of_bedrooms %></td>
-            <td><%= res.number_of_bathrooms %></td>
-            <td><%= link_to "Get Cleaned", new_schedule_path %></td>
+            <td style="text-align:left"><%= res.address %></td>
+            <td style="text-align:center"><%= res.number_of_bedrooms %></td>
+            <td style="text-align:center"><%= res.number_of_bathrooms %></td>
+            <td style="text-align:center"><%= link_to "Get Cleaned", new_schedule_path %></td>
         </tr>
     <% end %>
     </tbody>
     <% end %>
 </table>
+<p><%= link_to "Add a new residence", new_residence_path %></p>
     

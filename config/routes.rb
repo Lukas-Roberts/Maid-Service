@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :maids, only: [:new, :create, :edit, :show, :update]
   resources :clients, only: [:new, :create, :edit, :show, :update]
   resources :residences, only: [:new, :create, :edit, :show, :update]
+  resources :schedules, only: [:new, :create, :edit, :show, :update]
 
   root 'sessions#new'
 end

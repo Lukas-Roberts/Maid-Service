@@ -1,4 +1,13 @@
 <%= form_for residence do |f| %>
+
+    <% if residence.errors.any? %>
+        <ul>
+            <% residence.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
     <%= f.label :address %>
     <%= f.text_field :address %><br><br>
 

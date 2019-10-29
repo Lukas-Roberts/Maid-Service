@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user
-        @account = Account.find(session[:account_id]).accountable_type.constantize.find(params[:id])
+        @account = Account.find(session[:account_id]).accountable_type.constantize.find_by(account: session[:account_id])
     end
 
 end

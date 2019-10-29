@@ -15,14 +15,15 @@ class MaidsController < ApplicationController
         end
     end
 
-    def show
-        
+    def show 
     end
 
     def edit
     end
 
     def update
+        @maid.update(maid_params)
+        redirect_to maid_path(@maid)
     end
           
     private 

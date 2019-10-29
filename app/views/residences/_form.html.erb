@@ -1,0 +1,21 @@
+<%= form_for residence do |f| %>
+    <%= f.label :address %>
+    <%= f.text_field :address %><br><br>
+
+    <%= f.label :residence_type %>
+    <%= f.text_field :residence_type %><br><br>
+
+    <%= f.label :city %>
+    <%= f.text_field :city %><br><br>
+
+    <%= f.label :state %>
+    <%= f.text_field :state %><br><br>
+
+    <%= f.label :number_of_bedrooms %>
+    <%= f.text_field :number_of_bedrooms %><br><br>
+
+    <%= f.label :number_of_bathrooms %>
+    <%= f.text_field :number_of_bathrooms %><br><br>
+
+    <%= f.submit "Submit Residence"%>
+<% end %>

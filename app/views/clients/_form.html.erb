@@ -11,5 +11,9 @@
     <%= f.label :state, "State" %>
     <%= f.text_field :state %><br><br>
 
-    <%= f.submit "Complete Sign Up!" %>
+    <% if signup_complete? %>
+        <%= f.submit "Submit Edits!" %>
+    <% else %>
+        <%= f.submit "Complete Sign Up!" %>
+    <% end %>
 <% end %>

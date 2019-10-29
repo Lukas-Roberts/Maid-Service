@@ -1,15 +1,16 @@
 class SchedulesController < ApplicationController
+    before_action :get_schedule, only: [:show, :edit, :update]
 
     def new
-
+        @schedule = Schedule.new
     end
 
     def create
+        @schedule = Schedule.new(schedule_params)
 
     end
 
     def show
-
     end
 
     def edit
@@ -25,5 +26,9 @@ class SchedulesController < ApplicationController
     def schedule_params
         params.require(:schedule).permit(:day_of_week, :length_of_time, :maid_id)
     end
-    
+
+    def get_schedule
+        @schedule = Schedule.find(params[:id])
+    end
+
 end

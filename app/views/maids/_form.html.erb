@@ -1,0 +1,22 @@
+<%= form_for maid do |f| %>
+    <%= f.label :first_name, "First name" %>
+    <%= f.text_field :first_name %><br><br>
+
+    <%= f.label :last_name, "Last name" %>
+    <%= f.text_field :last_name %><br><br>
+
+    <%= f.label :city, "City" %>
+    <%= f.text_field :city %><br><br>
+
+    <%= f.label :state, "State" %>
+    <%= f.text_field :state %><br><br>
+
+    <%= f.label :experience, "Amount of experience" %>
+    <%= f.text_field :experience, placeholder: "e.g. 4 Months or 12 Years" %><br><br>
+
+    <% if signup_complete? %>
+        <%= f.submit "Submit Edits!" %>
+    <% else %>
+        <%= f.submit "Complete Sign Up!" %>
+    <% end %>
+<% end %>

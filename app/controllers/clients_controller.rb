@@ -6,12 +6,14 @@ class ClientsController < ApplicationController
 
     def create
         @client = Client.new(client_params)
-        @account = Account.find(session[:account_id])
-        @account.accountable = @client
-        if @account.save
-            redirect_to client_path(@client)
+        if @client.save
+            @account = Account.find(session[:account_id])
+            @account.accountable = @client
+            if @account.save
+                redirect_to client_path(@client)
+            end
         else
-            redirect_to new_client_path
+            render :new
         end
     end
 
@@ -22,9 +24,15 @@ class ClientsController < ApplicationController
     def edit
     end
 
+    def patch
+    end
+    
     def update
-        @client.update(client_params)
-        redirect_to client_path(@client)
+        if @client.update(client_params)
+            redirect_to client_path(@client)
+        else
+            render :edit
+        end
     end
 
     private

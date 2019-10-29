@@ -1,5 +1,6 @@
 class MaidsController < ApplicationController
     before_action :get_maid, only: [:show, :edit, :update]
+
     def new
         @maid = Maid.new
     end
@@ -11,7 +12,7 @@ class MaidsController < ApplicationController
         if @account.save
             redirect_to maid_path(@maid)
         else
-            redirect_to new_maid_path
+            render :new
         end
     end
 
@@ -22,8 +23,11 @@ class MaidsController < ApplicationController
     end
 
     def update
-        @maid.update(maid_params)
-        redirect_to maid_path(@maid)
+        if @maid.update(maid_params)
+            redirect_to maid_path(@maid)
+        else
+            render :edit
+        end
     end
           
     private 

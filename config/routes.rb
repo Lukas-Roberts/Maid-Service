@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#logout', as: 'logout'
 
   resources :accounts, only: [:new, :create]
-  resources :maids, only: [:new, :create, :edit, :show]
-  resources :clients, only: [:new, :create, :edit, :show]
-  resources :residences, only: [:new, :create, :edit, :show]
+  resources :maids, only: [:new, :create, :edit, :show, :update]
+  resources :clients, only: [:new, :create, :edit, :show, :update]
+  resources :residences, only: [:new, :create, :edit, :show, :update]
 
   root 'sessions#new'
 end

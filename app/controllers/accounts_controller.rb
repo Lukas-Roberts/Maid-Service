@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
                 redirect_to new_client_path
             end
         else
-            redirect_to new_account_path
+            render :new
         end
     end
 

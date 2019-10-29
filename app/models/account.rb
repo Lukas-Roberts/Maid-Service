@@ -1,5 +1,5 @@
 class Account < ApplicationRecord
-    belongs_to :accountable, polymorphic: true
+    belongs_to :accountable, polymorphic: true, optional: true
 
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true

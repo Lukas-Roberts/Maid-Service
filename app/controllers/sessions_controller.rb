@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
     def new
+        @account = Account.new
     end
 
     def create
@@ -9,9 +10,9 @@ class SessionsController < ApplicationController
             session[:account_id] = @account.id
             if signup_complete?
                 if @account.accountable_type == "Maid"
-                    redirect_to maid_path(@account)
+                    redirect_to maid_path(@account.accountable_id)
                 else
-                    redirect_to client_path(@account)
+                    redirect_to client_path(@account.accountable_id)
                 end
             else
                 if @account.usertype == "maid"
@@ -21,7 +22,7 @@ class SessionsController < ApplicationController
                 end
             end
         else
-            redirect_to login_path
+            render :new
         end
     end
 

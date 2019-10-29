@@ -7,14 +7,14 @@
         <td style="text-align:center"><strong>Address</strong></td>
         <td style="text-align:center"><strong>Bedrooms</strong></td>
         <td style="text-align:center"><strong>Bathrooms</strong></td>
-        <td style="text-align:center"><strong>Schedule a Cleaning</strong></td>
+        <td style="text-align:center"><strong>Request a Cleaning</strong></td>
     </tr>
     <% @residences.each do |res| %>
         <tr>
             <td style="text-align:left"><%= res.address %></td>
             <td style="text-align:center"><%= res.number_of_bedrooms %></td>
             <td style="text-align:center"><%= res.number_of_bathrooms %></td>
-            <td style="text-align:center"><%= link_to "Get Cleaned", new_schedule_path %></td>
+            <td style="text-align:center"><%= link_to "Clean request", new_schedule_path %></td>
         </tr>
     <% end %>
     </tbody>

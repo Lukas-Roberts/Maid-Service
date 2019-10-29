@@ -3,11 +3,11 @@ class SchedulesController < ApplicationController
 
     def new
         @schedule = Schedule.new
+        @maids = Maid.where(["city = :city and state = :state", {city: current_user.city, state: current_user.state}])
     end
 
     def create
         @schedule = Schedule.new(schedule_params)
-
     end
 
     def show

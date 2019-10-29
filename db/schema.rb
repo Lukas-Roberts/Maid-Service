@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_222758) do
 
   create_table "residences", force: :cascade do |t|
     t.string "address"
+    t.string "residence_type"
     t.string "city"
     t.string "state"
     t.integer "number_of_bedrooms"
@@ -56,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_222758) do
 
   create_table "schedules", force: :cascade do |t|
     t.integer "maid_id"
-    t.integer "client_id"
+    t.integer "residence_id"
     t.string "day_of_week"
     t.integer "length_of_time"
     t.datetime "created_at", null: false

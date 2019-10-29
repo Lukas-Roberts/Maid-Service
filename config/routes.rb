@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :accounts, only: [:new, :create]
   resources :maids, only: [:new, :create, :edit, :show]
   resources :clients, only: [:new, :create, :edit, :show]
-  resources :residences, only: [:new]
+  resources :residences, only: [:new, :create, :edit, :show]
 
   root 'sessions#new'
 end

@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if logged_in? && signup_complete? %>
+      <h2><%= "Welcome, #{current_user.first_name}!" %></h2>
+    <% end %>
     <%= yield %>
     <% if logged_in? %>
       <%= link_to "Logout", logout_path %>

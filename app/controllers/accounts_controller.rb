@@ -8,7 +8,7 @@ class AccountsController < ApplicationController
         @account = Account.new(account_params)
         if @account.save
             session[:account_id] = @account.id
-            if params[:accountable_type] == "maid"
+            if @account.usertype == "maid"
                 redirect_to new_maid_path
             else
                 redirect_to new_client_path
@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
     private
 
     def account_params
-        params.require(:account).permit(:username, :email, :password, :password_confirmation)
+        params.require(:account).permit(:username, :email, :password, :password_confirmation, :usertype)
     end
 
 end

@@ -12,11 +12,11 @@
     <%= f.label :password_confirmation, "Confirm Password" %>
     <%= f.password_field :password_confirmation %><br><br>
 
-    <%= label_tag :accountable_type, "Sign up as a Client" %>
-    <%= radio_button_tag 'accountable_type', 'client', checked: "checked" %><br><br>
+    <%= f.label :usertype, "Sign up as a Client" %>
+    <%= f.radio_button :usertype, 'client', checked: "checked" %><br><br>
 
-    <%= label_tag :accountable_type, "Sign up as a Maid" %>
-    <%= radio_button_tag 'accountable_type', 'maid' %><br><br>
+    <%= f.label :usertype, "Sign up as a Maid" %>
+    <%= f.radio_button :usertype, 'maid' %><br><br>
 
     <%= f.submit "Create account!" %>
 <% end %>

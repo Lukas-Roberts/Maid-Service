@@ -1,4 +1,7 @@
-<h2>Please sign up below!</h2>
+<div class="d-flex justify-content-center">
+<span class="border border-info rounded">
+<div class="shadow-lg p-4 bg-info text-white">
+<h2>Sign up below!</h2>
 <%= form_for @account do |f| %>
 
     <% if @account.errors.any? %>
@@ -8,26 +11,28 @@
             <% end %>
         </ul>
     <% end %>
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <%= f.text_field :username, placeholder: "Username", class: 'form-control' %><br>
 
-    <%= f.label :username %>
-    <%= f.text_field :username %><br><br>
-
-    <%= f.label :email %>
-    <%= f.text_field :email %><br><br>
+            <%= f.text_field :email, placeholder: "Email", class: 'form-control' %><br>
     
-    <%= f.label :password %>
-    <%= f.password_field :password %><br><br>
+            <%= f.password_field :password, placeholder: "Password", class: 'form-control' %><br>
 
-    <%= f.label :password_confirmation, "Confirm Password" %>
-    <%= f.password_field :password_confirmation %><br><br>
+            <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: 'form-control' %><br>
 
-    <%= f.label :usertype, "Sign up as a Client" %>
-    <%= f.radio_button :usertype, 'client', checked: "checked" %><br><br>
+            <%= f.label :usertype, "Sign up as a Client" %>
+            <%= f.radio_button :usertype, 'client', checked: "checked" %><br>
 
-    <%= f.label :usertype, "Sign up as a Maid" %>
-    <%= f.radio_button :usertype, 'maid' %><br><br>
+            <%= f.label :usertype, "Sign up as a Maid" %>
+            <%= f.radio_button :usertype, 'maid' %><br><br>
 
-    <%= f.submit "Create account!" %>
+            <%= f.submit "Create account!", class: 'btn btn-outline-light' %>
+        </div>
+    </div>
 <% end %>
+</div>
+</span>
+</div>
 
 

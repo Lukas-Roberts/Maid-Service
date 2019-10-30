@@ -8,6 +8,11 @@ class SchedulesController < ApplicationController
 
     def create
         @schedule = Schedule.new(schedule_params)
+        if @schedule.save
+            redirect_to schedule_path(@schedule)
+        else
+            render :new
+        end
     end
 
     def show

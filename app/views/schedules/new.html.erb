@@ -1,8 +1,45 @@
+<div class="d-flex justify-content-center">
+<span class="border border-info rounded">
+<div class="shadow-lg p-4 bg-info text-white">
+<h4>Clean Request Form</h4><br>
 <%= form_for @schedule do |f| %>
 
+    <div>
+        <%= f.label :maid_id, "Please select a maid"%>
+        <%= f.collection_select :maid_id, @maids, :id, :first_name %>
+    </div>
 
-    <%= f.label :maid_id, "Request Maid"%>
-    <%= f.collection_select :maid_id, @maids, :id, :first_name %><br><br>
+    <%= f.label :day_of_week, "Which day" %><br>
 
-    <%= f.submit "Submit Request" %>
-    <% end %>
+    <div class="form-check form-check-inline">
+        <%= f.radio_button :day_of_week, 'Monday', checked: 'checked', class: 'form-check-input' %>
+        <%= f.label :day_of_week, "Monday", class: 'form-check-label' %>
+    </div>
+    <div class="form-check form-check-inline">
+        <%= f.radio_button :day_of_week, 'Tuesday', class: 'form-check-input' %>
+        <%= f.label :day_of_week, "Tuesday", class: 'form-check-label' %>
+    </div>
+    <div class="form-check form-check-inline">
+        <%= f.radio_button :day_of_week, 'Wednesday', class: 'form-check-input' %>
+        <%= f.label :day_of_week, "Wednesday", class: 'form-check-label' %>
+    </div>
+    <div class="form-check form-check-inline">
+        <%= f.radio_button :day_of_week, 'Thursday', class: 'form-check-input' %>
+        <%= f.label :day_of_week, "Thursday", class: 'form-check-label' %>
+    </div>
+    <div class="form-check form-check-inline">
+        <%= f.radio_button :day_of_week, 'Friday', class: 'form-check-input' %>
+        <%= f.label :day_of_week, "Friday", class: 'form-check-label' %>
+    </div>
+
+    <div>
+        <br><%= f.label :length_of_time, 'Amount of Time (2hrs - 6hrs)' %>
+        <%= f.select :length_of_time, [2, 3, 4, 5, 6] %><br><br>
+    </div>
+    
+    <%= f.submit "Submit Request", class: 'btn btn-outline-light' %>
+    <p>Please note: This is a <strong>request</strong>, and it can be denied.</p>
+<% end %>
+</div>
+</span>
+</div>

@@ -1,11 +1,18 @@
+<div class="d-flex justify-content-center">
+<span class="border border-info rounded">
+<div class="shadow-lg p-4 bg-info text-white">
 <h2>Please login below!</h2>
 <%= form_tag('/login') do %>
-    <%= label_tag :username %>
-    <%= text_field_tag :username %><br><br>
-
-    <%= label_tag :password %>
-    <%= password_field_tag :password %><br><br>
-
-    <%= submit_tag "Login" %>
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <%= text_field_tag :username, '', placeholder: 'Username', class: 'form-control' %><br>
+            <%= password_field_tag :password, '', placeholder: 'Password', class: 'form-control' %><br>
+           <%= submit_tag "Login", class: 'btn btn-outline-light' %>
+        </div>
+    </div>
+    <p>Don't have an account? Sign up <%= link_to "here", new_account_path %>!</p>
 <% end %>
-<h4>Don't have an account? Sign up <%= link_to "here", new_account_path %>!</h4>
+</div>
+</span><br>
+
+</div>

@@ -5,6 +5,7 @@ class CreateSchedules < ActiveRecord::Migration[5.2]
       t.integer :residence_id
       t.string :day_of_week
       t.integer :length_of_time
+      t.integer :client_id
 
       t.timestamps
     end

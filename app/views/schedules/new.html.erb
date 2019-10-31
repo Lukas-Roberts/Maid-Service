@@ -4,6 +4,14 @@
 <h4>Clean Request Form</h4><br>
 <%= form_for @schedule do |f| %>
 
+    <% if @schedule.errors.any? %>
+        <ul>
+            <% @schedule.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    <% end %>
+
     <div>
         <%= f.label :maid_id, "Please select a maid"%>
         <%= f.collection_select :maid_id, @maids, :id, :first_name %>
@@ -36,6 +44,9 @@
         <br><%= f.label :length_of_time, 'Amount of Time (2hrs - 6hrs)' %>
         <%= f.select :length_of_time, [2, 3, 4, 5, 6] %><br><br>
     </div>
+
+    <%= f.hidden_field :residence_id, value: params[:residence_id] %>
+    <%= f.hidden_field :client_id, value: params[:client_id] %>
     
     <%= f.submit "Submit Request", class: 'btn btn-outline-light' %>
     <p>Please note: This is a <strong>request</strong>, and it can be denied.</p>
@@ -43,3 +54,4 @@
 </div>
 </span>
 </div>
+<%= params %>

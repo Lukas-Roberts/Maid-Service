@@ -1,3 +1,6 @@
+<div class="d-flex justify-content-center">
+<span class="border border-info rounded">
+<div class="shadow-lg p-4 bg-info text-white">
 <%= form_for maid do |f| %>
 
     <% if maid.errors.any? %>
@@ -7,25 +10,28 @@
             <% end %>
         </ul>
     <% end %>
+    
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <%= f.text_field :first_name, placeholder: 'First Name', class: 'form-control' %><br>
 
-    <%= f.label :first_name, "First name" %>
-    <%= f.text_field :first_name %><br><br>
+            <%= f.text_field :last_name, placeholder: 'Last Name', class: 'form-control' %><br>
 
-    <%= f.label :last_name, "Last name" %>
-    <%= f.text_field :last_name %><br><br>
+            <%= f.text_field :city, placeholder: 'City', class: 'form-control' %><br>
 
-    <%= f.label :city, "City" %>
-    <%= f.text_field :city %><br><br>
+            <%= f.text_field :state, placeholder: 'State', class: 'form-control' %><br>
 
-    <%= f.label :state, "State" %>
-    <%= f.text_field :state %><br><br>
+            <%= f.label :experience, "Amount of experience" %>
+            <%= f.text_field :experience, placeholder: "e.g. 4 Months, 12 Years", class: 'form-control' %><br><br>
 
-    <%= f.label :experience, "Amount of experience" %>
-    <%= f.text_field :experience, placeholder: "e.g. 4 Months or 12 Years" %><br><br>
-
-    <% if signup_complete? %>
-        <%= f.submit "Submit Edits!" %>
-    <% else %>
-        <%= f.submit "Complete Sign Up!" %>
-    <% end %>
+            <% if signup_complete? %>
+                <%= f.submit "Submit Edits!", class: 'btn btn-outline-light' %>
+            <% else %>
+                <%= f.submit "Complete Sign Up!", class: 'btn btn-outline-light' %>
+            <% end %>
+        </div>
+    </div>
 <% end %>
+</div>
+</span>
+</div>

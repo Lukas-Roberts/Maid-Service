@@ -1,6 +1,14 @@
 class SchedulesController < ApplicationController
     before_action :get_schedule, only: [:show, :edit, :update]
 
+    def index
+        if current_account.usertype == "client"
+            @schedules = Schedule.where(['client_id = :client_id', {client_id: current_user}])
+        else
+            @schedules = Schedule.where(['maid_id = :maid_id', {maid_id: current_user}])
+        end
+    end
+
     def new
         @schedule = Schedule.new
         @maids = Maid.where(["city = :city and state = :state", {city: current_user.city, state: current_user.state}])
@@ -11,6 +19,7 @@ class SchedulesController < ApplicationController
         if @schedule.save
             redirect_to schedule_path(@schedule)
         else
+            @maids = Maid.where(["city = :city and state = :state", {city: current_user.city, state: current_user.state}])
             render :new
         end
     end
@@ -28,7 +37,7 @@ class SchedulesController < ApplicationController
     private
 
     def schedule_params
-        params.require(:schedule).permit(:day_of_week, :length_of_time, :maid_id)
+        params.require(:schedule).permit(:day_of_week, :length_of_time, :maid_id, :residence_id, :client_id)
     end
 
     def get_schedule

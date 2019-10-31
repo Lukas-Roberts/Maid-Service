@@ -17,6 +17,7 @@ class MaidsController < ApplicationController
     end
 
     def show 
+        @schedules = Schedule.where(["maid_id = :maid_id", {maid_id: current_user.id}])
     end
 
     def edit

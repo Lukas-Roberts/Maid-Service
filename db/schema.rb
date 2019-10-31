@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_222758) do
     t.integer "residence_id"
     t.string "day_of_week"
     t.integer "length_of_time"
+    t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

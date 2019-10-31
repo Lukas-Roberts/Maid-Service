@@ -1,3 +1,6 @@
+<div class="d-flex justify-content-center">
+<span class="border border-info rounded">
+<div class="shadow-lg p-4 bg-info text-white">
 <%= form_for residence do |f| %>
 
     <% if residence.errors.any? %>
@@ -8,23 +11,24 @@
         </ul>
     <% end %>
 
-    <%= f.label :address %>
-    <%= f.text_field :address %><br><br>
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <%= f.text_field :address, placeholder: 'Address', class: 'form-control' %><br>
 
-    <%= f.label :residence_type %>
-    <%= f.text_field :residence_type %><br><br>
+            <%= f.text_field :residence_type, placeholder: 'Type of residence', class: 'form-control' %><br>
 
-    <%= f.label :city %>
-    <%= f.text_field :city %><br><br>
+            <%= f.text_field :city, placeholder: 'City', class: 'form-control' %><br>
 
-    <%= f.label :state %>
-    <%= f.text_field :state %><br><br>
+            <%= f.text_field :state, placeholder: 'State', class: 'form-control' %><br>
 
-    <%= f.label :number_of_bedrooms %>
-    <%= f.text_field :number_of_bedrooms %><br><br>
+            <%= f.text_field :number_of_bedrooms, placeholder: '# of bedrooms', class: 'form-control' %><br>
 
-    <%= f.label :number_of_bathrooms %>
-    <%= f.text_field :number_of_bathrooms %><br><br>
+            <%= f.text_field :number_of_bathrooms, placeholder: '# of bathrooms', class: 'form-control' %><br><br>
 
-    <%= f.submit "Submit Residence"%>
+            <%= f.submit "Submit Residence", class: 'btn btn-outline-light' %>
+        </div>
+    </div>
 <% end %>
+</div>
+</span>
+</div>

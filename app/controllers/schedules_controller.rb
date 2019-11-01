@@ -30,8 +30,12 @@ class SchedulesController < ApplicationController
     def edit
     end
 
-    def update
 
+    def update
+        @schedule.day_of_week = params[:schedule][:day_of_week]
+        if @schedule.save
+            redirect_to maid_path
+        end
     end
 
     private

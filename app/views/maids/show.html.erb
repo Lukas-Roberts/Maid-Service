@@ -1,4 +1,40 @@
-<h2>Nothing to put here yet!</h2>
-<% @schedules.each do |schedule| %>
-    <%= schedule.day_of_week %>
-<% end %>
+<div class="container">
+    <table class="table">
+    <% if @schedules %>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="text-align:center">Day of the Week</th>
+                <th scope="col" style="text-align:center">Amount of time</th>
+                <th scope="col" style="text-align:center">Number of Bedrooms</th>
+                <th scope="col" style="text-align:center">Number of Bathrooms</th>
+                <th scope="col" style="text-align:center">Request Status</th>
+                <th scope="col" style="text-align:center" colspan="2">Approve or Deny</th> 
+            </tr>
+        </thead>
+        <tbody>
+        <% @schedules.each do |schedule| %>
+        <%= schedule.attributes %>%
+            <tr>
+                <td style="text-align:center"><%= schedule.day_of_week %></td>
+                <td style="text-align:center"><%= "#{schedule.length_of_time} hrs" %></td>
+                <td style="text-align:center"><%= Residence.find_by(id: schedule.residence_id).number_of_bedrooms %></td>
+                <td style="text-align:center"><%= Residence.find_by(id: schedule.residence_id).number_of_bathrooms %></td>
+                <td style="text-align:center"><%= schedule.length_of_time %></td>
+                <td style="text-align:center">
+                    <%= form_for schedule, url: schedule_path(schedule), method: :patch do |t| %>
+                        <%= t.hidden_field :day_of_week, value: "Approve" %>
+                        <%= t.submit "Approve" %>
+                    <% end %>
+                </td>
+                <td style="text-align:center">
+                    <%= form_for schedule, url: schedule_path(schedule), method: :patch do |t| %>
+                        <%= t.hidden_field :day_of_week, value: "Denied" %>
+                        <%= t.submit "Deny" %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    <% end %>
+    </table>
+</div>

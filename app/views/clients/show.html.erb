@@ -1,25 +1,25 @@
-<p><%= link_to "Edit your information", edit_client_path, class: 'btn btn-outline-info' %>
-<%= link_to "View open clean requests", schedules_path, class: 'btn btn-outline-info' %></p>
-
-<table>
-<% if @residences %>
-    <tbody>
-    <tr>
-        <td style="text-align:center"><strong>Address</strong></td>
-        <td style="text-align:center"><strong>Bedrooms</strong></td>
-        <td style="text-align:center"><strong>Bathrooms</strong></td>
-        <td style="text-align:center"><strong>Request a Cleaning</strong></td>
-    </tr>
-    <% @residences.each do |res| %>
-        <tr>
-            <td style="text-align:left"><%= res.address %></td>
-            <td style="text-align:center"><%= res.number_of_bedrooms %></td>
-            <td style="text-align:center"><%= res.number_of_bathrooms %></td>
-            <td style="text-align:center"><%= link_to "Clean request", new_client_residence_schedule_path(current_user.id, res.id), class: 'btn btn-outline-info' %></td>
-        </tr>
+<div class="container">
+    <table class="table">
+    <% if @residences %>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="text-align:center">Address</th>
+                <th scope="col" style="text-align:center">Bedrooms</th>
+                <th scope="col" style="text-align:center">Bathrooms</th>
+                <th scope="col" style="text-align:center">Request a Cleaning</th> 
+            </tr>
+        </thead>
+        <tbody>
+        <% @residences.each do |res| %>
+            <tr>
+                <td style="text-align:center"><%= res.address %></td>
+                <td style="text-align:center"><%= res.number_of_bedrooms %></td>
+                <td style="text-align:center"><%= res.number_of_bathrooms %></td>
+                <td style="text-align:center"><%= link_to "Clean request", new_client_residence_schedule_path(current_user.id, res.id), class: 'btn btn-outline-info' %></td>
+            </tr>
+        <% end %>
+        </tbody>
     <% end %>
-    </tbody>
-    <% end %>
-</table>
-<p><%= link_to "Add a new residence", new_residence_path %></p>
+    </table>
+</div>
     

@@ -1,6 +1,6 @@
 class ResidencesController < ApplicationController
-    before_action :get_residence, only: [:show, :edit, :update]
-
+    before_action :get_residence, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate
 
     def new
         @residence = Residence.new
@@ -17,19 +17,23 @@ class ResidencesController < ApplicationController
     end
 
     def show
-
     end
 
     def edit
-        if @residence.save
-            redirect_to client_path
+    end
+
+    def update
+        if @residence.update(residence_params)
+            redirect_to client_path(current_user.id)
         else 
             render :edit
         end
     end
 
-    def update
-        
+    def destroy
+        @residence.delete
+        flash[:alert] = "Residence Deleted"
+        redirect_to client_path(current_user.id)
     end
 
     private

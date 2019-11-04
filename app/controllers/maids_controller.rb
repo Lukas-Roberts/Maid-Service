@@ -1,6 +1,6 @@
 class MaidsController < ApplicationController
     before_action :get_maid, only: [:show, :edit, :update]
-
+    before_action :authenticate
 
     def new
         @maid = Maid.new

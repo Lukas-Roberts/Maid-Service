@@ -1,11 +1,14 @@
 <div class="container p-4">
     <table class="table">
-    <% if @residences %>
+    <% if flash[:alert] %>
+        <div class="alert"><%= flash[:alert] %></div>
+    <% end %>
+    <% if @residences != []%>
         <thead class="thead-dark">
             <tr>
                 <th scope="col" style="text-align:center">Address</th>
-                <th scope="col" style="text-align:center">Bedrooms</th>
-                <th scope="col" style="text-align:center">Bathrooms</th>
+                <th scope="col" style="text-align:center">City</th>
+                <th scope="col" style="text-align:center">View Residence</th>
                 <th scope="col" style="text-align:center">Request a Cleaning</th> 
             </tr>
         </thead>
@@ -13,12 +16,16 @@
         <% @residences.each do |res| %>
             <tr>
                 <td style="text-align:center"><%= res.address %></td>
-                <td style="text-align:center"><%= res.number_of_bedrooms %></td>
-                <td style="text-align:center"><%= res.number_of_bathrooms %></td>
+                <td style="text-align:center"><%= res.city %></td>
+                <td style="text-align:center"><%= link_to "View", residence_path(res.id), class: 'btn btn-outline-info' %></td>
                 <td style="text-align:center"><%= link_to "Clean request", new_client_residence_schedule_path(current_user.id, res.id), class: 'btn btn-outline-info' %></td>
             </tr>
         <% end %>
         </tbody>
+    <% else %>
+        <tr>
+            <td style="text-align:center"><%= link_to "Add a residence", new_residence_path, class: 'btn btn-outline-info' %></td>
+        </tr>  
     <% end %>
     </table>
 </div>

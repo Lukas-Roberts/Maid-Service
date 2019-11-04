@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
     before_action :get_schedule, only: [:edit, :update, :destroy]
+    before_action :authenticate
 
     def index
         @schedules = Schedule.where(['client_id = :client_id', {client_id: current_user}])

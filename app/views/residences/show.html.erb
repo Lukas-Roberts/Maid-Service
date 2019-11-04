@@ -5,7 +5,8 @@
                 <th scope="col" style="text-align:center">Address</th>
                 <th scope="col" style="text-align:center">Bedrooms</th>
                 <th scope="col" style="text-align:center">Bathrooms</th>
-                <th scope="col" style="text-align:center">Request a Cleaning</th> 
+                <th scope="col" style="text-align:center">Edit Information</th>
+                 <th scope="col" style="text-align:center">Delete Residence</th>
             </tr>
         </thead>
         <tbody>
@@ -13,7 +14,8 @@
                 <td style="text-align:center"><%= @residence.address %></td>
                 <td style="text-align:center"><%= @residence.number_of_bedrooms %></td>
                 <td style="text-align:center"><%= @residence.number_of_bathrooms %></td>
-                <td style="text-align:center"><%= link_to "Edit residence information", edit_residence_path(@residence), class: 'btn btn-outline-info' %></td>
+                <td style="text-align:center"><%= link_to "Edit", edit_residence_path(@residence), class: 'btn btn-outline-info' %></td>
+                <td style="text-align:center"><%= link_to "Delete", residence_path(@residence), method: :delete, class: 'btn btn-outline-info' %></td>
             </tr>
         </tbody>
     </table>

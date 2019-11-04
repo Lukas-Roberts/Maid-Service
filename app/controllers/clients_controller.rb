@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
     before_action :get_client, only: [:show, :edit, :update]
+    before_action :authenticate
 
     def new
         @client = Client.new

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :accounts, only: [:new, :create]
   resources :maids, only: [:new, :create, :edit, :show, :update]
   resources :clients, only: [:new, :create, :edit, :show, :update]
-  resources :residences, only: [:new, :create, :edit, :show, :update]
+  resources :residences, only: [:new, :create, :edit, :show, :update, :destroy]
   resources :schedules, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :clients, only: [:show] do
     resources :residences, only: [:show] do

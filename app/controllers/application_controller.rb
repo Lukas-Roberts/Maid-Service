@@ -42,22 +42,26 @@ class ApplicationController < ActionController::Base
 
     def nav_home_path
         if signup_complete?
-        if current_account.usertype == "maid"
-            maid_path(current_user.id)
-        else
-            client_path(current_user.id)
+            if current_account.usertype == "maid"
+                maid_path(current_user.id)
+            else
+                client_path(current_user.id)
+            end
         end
-    end
     end
 
     def nav_edit_path
         if signup_complete?
-        if current_account.usertype == "maid"
-            edit_maid_path(current_user.id)
-        else
-            edit_client_path(current_user.id)
+            if current_account.usertype == "maid"
+                edit_maid_path(current_user.id)
+            else
+                edit_client_path(current_user.id)
+            end
         end
     end
+
+    def authenticate
+        redirect_to login_path if !logged_in?
     end
 
 end

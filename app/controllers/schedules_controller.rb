@@ -28,7 +28,7 @@ class SchedulesController < ApplicationController
     def update
         @schedule.status = params[:schedule][:status]
         if @schedule.save
-            redirect_to maid_path
+            redirect_to maid_path(current_user.id)
         end
     end
 

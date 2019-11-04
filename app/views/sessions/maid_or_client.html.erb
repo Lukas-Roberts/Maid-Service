@@ -1,0 +1,10 @@
+<%= @account.username %>
+<%= form_with model: @account, url: choose_path, local: true do |f| %>
+    <%= f.label :usertype, "Sign up as a Client" %>
+    <%= f.radio_button :usertype, 'client', checked: "checked" %><br>
+
+    <%= f.label :usertype, "Sign up as a Maid" %>
+    <%= f.radio_button :usertype, 'maid' %>
+
+    <%= f.submit 'Submit' %>
+<% end %>

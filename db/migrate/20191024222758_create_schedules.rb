@@ -4,6 +4,7 @@ class CreateSchedules < ActiveRecord::Migration[5.2]
       t.integer :maid_id
       t.integer :residence_id
       t.string :day_of_week
+      t.string :status, default: "Pending"
       t.integer :length_of_time
       t.integer :client_id
 

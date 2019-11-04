@@ -1,40 +1,39 @@
-<div class="container">
+<div class="container p-4">
     <table class="table">
-    <% if @schedules %>
+    <% if @schedules != [] %>
         <thead class="thead-dark">
             <tr>
                 <th scope="col" style="text-align:center">Day of the Week</th>
                 <th scope="col" style="text-align:center">Amount of time</th>
-                <th scope="col" style="text-align:center">Number of Bedrooms</th>
-                <th scope="col" style="text-align:center">Number of Bathrooms</th>
                 <th scope="col" style="text-align:center">Request Status</th>
                 <th scope="col" style="text-align:center" colspan="2">Approve or Deny</th> 
             </tr>
         </thead>
         <tbody>
         <% @schedules.each do |schedule| %>
-        <%= schedule.attributes %>%
             <tr>
                 <td style="text-align:center"><%= schedule.day_of_week %></td>
                 <td style="text-align:center"><%= "#{schedule.length_of_time} hrs" %></td>
-                <td style="text-align:center"><%= Residence.find_by(id: schedule.residence_id).number_of_bedrooms %></td>
-                <td style="text-align:center"><%= Residence.find_by(id: schedule.residence_id).number_of_bathrooms %></td>
-                <td style="text-align:center"><%= schedule.length_of_time %></td>
+                <td style="text-align:center"><%= schedule.status %></td>
                 <td style="text-align:center">
-                    <%= form_for schedule, url: schedule_path(schedule), method: :patch do |t| %>
-                        <%= t.hidden_field :day_of_week, value: "Approve" %>
-                        <%= t.submit "Approve" %>
+                <% if schedule.status == "Pending" %>
+                    <%= form_for schedule, url: schedule_path(schedule), method: :patch do |f| %>
+                        <%= f.hidden_field :status, value: "Approved" %>
+                        <%= f.submit "Approve", class: 'btn btn-outline-info' %>
                     <% end %>
                 </td>
                 <td style="text-align:center">
-                    <%= form_for schedule, url: schedule_path(schedule), method: :patch do |t| %>
-                        <%= t.hidden_field :day_of_week, value: "Denied" %>
-                        <%= t.submit "Deny" %>
+                    <%= form_for schedule, url: schedule_path(schedule), method: :patch do |f| %>
+                        <%= f.hidden_field :status, value: "Denied" %>
+                        <%= f.submit "Deny", class: 'btn btn-outline-info' %>
                     <% end %>
+                <% end%>    
                 </td>
             </tr>
         <% end %>
         </tbody>
+    <% else %>
+        <h5>You have no requests for cleaning</h5>
     <% end %>
     </table>
 </div>

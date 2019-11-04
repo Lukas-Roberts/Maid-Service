@@ -18,6 +18,18 @@ class AccountsController < ApplicationController
         end
     end
 
+    def choose
+        @account = current_account
+        @account.usertype == params[:usertype]
+        @account.save
+        if @account.usertype == "maid"
+            redirect_to new_maid_path
+        else
+            redirect_to new_client_path
+        end
+    end
+
+
     private
 
     def account_params

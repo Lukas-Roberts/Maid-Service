@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
     before_action :get_client, only: [:show, :edit, :update]
+
     def new
         @client = Client.new
     end
@@ -18,16 +19,20 @@ class ClientsController < ApplicationController
     end
 
     def show
+        authorize(@client)
         @residences = Residence.where(["client_id = :client_id", {client_id: params[:id]}])
+
     end
 
     def edit
+        authorize(@client)
     end
 
     def patch
     end
     
     def update
+        authorize(@client)
         if @client.update(client_params)
             redirect_to client_path(@client)
         else
@@ -42,7 +47,7 @@ class ClientsController < ApplicationController
     end
 
     def get_client
-        @client = Client.find(params[:id])
+        @client = Client.find(current_user.id)
     end
     
 end

@@ -22,8 +22,8 @@
         <ul class="navbar-nav mr-auto">
             <%= link_to "Home", nav_home_path, class: 'nav-item nav-link active' %>
             <%= link_to "Edit your info", nav_edit_path, class: 'nav-item nav-link' %>
-          <% if current_account.usertype == 'client' %>
-              <%= link_to "View clean requests", schedules_path, class: 'nav-item nav-link' %>
+          <% if current_account.accountable_type == "Client" && signup_complete? %>
+              <%= link_to "View clean requests", client_schedules_path(current_user.id), class: 'nav-item nav-link' %>
               <%= link_to "Add a new residence", new_residence_path, class: 'nav-item nav-link' %>
           <% end %>
             <%= link_to "Sign out", logout_path, class: 'nav-item nav-link' %>

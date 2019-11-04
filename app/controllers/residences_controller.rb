@@ -1,6 +1,7 @@
 class ResidencesController < ApplicationController
     before_action :get_residence, only: [:show, :edit, :update]
 
+
     def new
         @residence = Residence.new
     end
@@ -20,7 +21,11 @@ class ResidencesController < ApplicationController
     end
 
     def edit
-
+        if @residence.save
+            redirect_to client_path
+        else 
+            render :edit
+        end
     end
 
     def update

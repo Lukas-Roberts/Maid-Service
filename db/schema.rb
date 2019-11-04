@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2019_10_24_222758) do
     t.string "password_digest"
     t.string "email"
     t.string "usertype"
+    t.string "google_token"
+    t.string "google_refresh_token"
     t.string "accountable_type"
     t.integer "accountable_id"
     t.datetime "created_at", null: false
@@ -59,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_10_24_222758) do
     t.integer "maid_id"
     t.integer "residence_id"
     t.string "day_of_week"
+    t.string "status", default: "Pending"
     t.integer "length_of_time"
     t.integer "client_id"
     t.datetime "created_at", null: false

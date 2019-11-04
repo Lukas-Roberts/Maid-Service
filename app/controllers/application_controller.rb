@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
-    helper_method :logged_in?, :current_user, :signup_complete?, :current_account, :nav_home_path, :nav_edit_path
+    helper_method :logged_in?, :current_user, :signup_complete?, :current_account, :nav_home_path, :nav_edit_path, :authorize
+    rescue_from ActiveRecord::RecordNotFound, :with => :rescue404
+    rescue_from ActionController::RoutingError, :with => :rescue404
+
 
     def logged_in?
       if session[:account_id]
@@ -8,6 +11,14 @@ class ApplicationController < ActionController::Base
       else
           false
       end
+    end
+
+    def authorize(user)
+        return head(:forbidden) unless user.id == params[:id].to_i
+    end
+
+    def rescue404
+        render(:file => File.join(Rails.root, 'public/404.html'), :status => 404, :layout => false)
     end
 
     def current_account

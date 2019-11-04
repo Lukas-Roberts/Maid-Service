@@ -1,12 +1,8 @@
 class SchedulesController < ApplicationController
-    before_action :get_schedule, only: [:show, :edit, :update]
+    before_action :get_schedule, only: [:edit, :update, :destroy]
 
     def index
-        if current_account.usertype == "client"
-            @schedules = Schedule.where(['client_id = :client_id', {client_id: current_user}])
-        else
-            @schedules = Schedule.where(['maid_id = :maid_id', {maid_id: current_user}])
-        end
+        @schedules = Schedule.where(['client_id = :client_id', {client_id: current_user}])
     end
 
     def new
@@ -17,14 +13,11 @@ class SchedulesController < ApplicationController
     def create
         @schedule = Schedule.new(schedule_params)
         if @schedule.save
-            redirect_to schedule_path(@schedule)
+            redirect_to client_path(current_user.id)
         else
             @maids = Maid.where(["city = :city and state = :state", {city: current_user.city, state: current_user.state}])
             render :new
         end
-    end
-
-    def show
     end
 
     def edit
@@ -32,10 +25,16 @@ class SchedulesController < ApplicationController
 
 
     def update
-        @schedule.day_of_week = params[:schedule][:day_of_week]
+        @schedule.status = params[:schedule][:status]
         if @schedule.save
             redirect_to maid_path
         end
+    end
+
+    def destroy
+        @schedule.delete
+        flash[:alert] = "Request Deleted"
+        redirect_to client_path(current_user.id)
     end
 
     private

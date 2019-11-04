@@ -1,6 +1,29 @@
-<% @schedules.each do |schedule| %>
-    <%= schedule.day_of_week %>
-    <%= "#{schedule.length_of_time} hours"%>
-<% end %>
+<div class="container p-4">
+    <table class="table">
+    <% if @schedules != [] %>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="text-align:center">Day of the Week</th>
+                <th scope="col" style="text-align:center">Amount of time</th>
+                <th scope="col" style="text-align:center">Request Status</th>
+                <th scope="col" style="text-align:center">Delete Request</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @schedules.each do |schedule| %>
+            <tr>
+                <td style="text-align:center"><%= schedule.day_of_week %></td>
+                <td style="text-align:center"><%= "#{schedule.length_of_time} hrs" %></td>
+                <td style="text-align:center"><%= schedule.status %></td>
+                <td style="text-align:center"><%= link_to "Delete", schedule_path(schedule.id), method: :delete, class: 'btn btn-outline-info' %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    <% else %>
+        <h5>You have no open clean requests</h5>
+    <% end %>
+    </table>
+</div>
+
 
 

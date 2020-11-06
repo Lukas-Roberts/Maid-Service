@@ -7,8 +7,9 @@ class ResidencesController < ApplicationController
     end
     
     def create
-        @residence = Residence.new(residence_params)
-        @residence.client_id = current_user.id
+        #@residence = Residence.new(residence_params)
+        #@residence.client_id = current_user.id
+        @residence = current_user.residences.build(residence_params)
         if @residence.save
             redirect_to residence_path(@residence)
         else

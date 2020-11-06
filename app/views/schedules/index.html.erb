@@ -5,6 +5,7 @@
             <tr>
                 <th scope="col" style="text-align:center">Day of the Week</th>
                 <th scope="col" style="text-align:center">Amount of time</th>
+                <th scope="col" style="text-align:center">Requested Maid</th>
                 <th scope="col" style="text-align:center">Request Status</th>
                 <th scope="col" style="text-align:center">Delete Request</th>
             </tr>
@@ -14,6 +15,7 @@
             <tr>
                 <td style="text-align:center"><%= schedule.day_of_week %></td>
                 <td style="text-align:center"><%= "#{schedule.length_of_time} hrs" %></td>
+                <td style="text-align:center"><%= schedule.maid.first_name + " " + schedule.maid.last_name %></td>
                 <td style="text-align:center"><%= schedule.status %></td>
                 <td style="text-align:center"><%= link_to "Delete", schedule_path(schedule.id), method: :delete, class: 'btn btn-outline-info' %></td>
             </tr>

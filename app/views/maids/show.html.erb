@@ -4,6 +4,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col" style="text-align:center">Day of the Week</th>
+                <th scope="col" style="text-align:center">Client</th>
                 <th scope="col" style="text-align:center">Amount of time</th>
                 <th scope="col" style="text-align:center">Request Status</th>
                 <th scope="col" style="text-align:center" colspan="2">Approve or Deny</th> 
@@ -13,6 +14,7 @@
         <% @schedules.each do |schedule| %>
             <tr>
                 <td style="text-align:center"><%= schedule.day_of_week %></td>
+                <td style="text-align:center"><%= current_user.first_name + " " + current_user.last_name %></td>
                 <td style="text-align:center"><%= "#{schedule.length_of_time} hrs" %></td>
                 <td style="text-align:center"><%= schedule.status %></td>
                 <td style="text-align:center">

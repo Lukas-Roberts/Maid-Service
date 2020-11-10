@@ -4,5 +4,7 @@ class Maid < ApplicationRecord
     has_many :residences, through: :schedules
 
     validates :first_name, :last_name, :city, :state, presence: true
+
+    STATES = CS.states(:us)
     
 end

@@ -6,6 +6,8 @@ class CreateMaids < ActiveRecord::Migration[5.2]
       t.string :city
       t.string :state
       t.string :experience
+      t.integer :overall_rating
+      t.integer :number_of_ratings
 
       t.timestamps
     end

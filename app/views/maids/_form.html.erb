@@ -21,7 +21,7 @@
 
             <%= f.text_field :state, placeholder: 'State', class: 'form-control' %><br>
 
-            <%= f.collection_select :state, Maid::STATES.keys, :to_s, :to_s, :include_blank => true %><br>
+            <%# f.collection_select :state, Maid::STATES.keys, :to_s, :to_s, :include_blank => true %><br>
             
             <%= f.label :experience, "Amount of experience" %>
             <%= f.text_field :experience, placeholder: "e.g. 4 Months, 12 Years", class: 'form-control' %><br><br>

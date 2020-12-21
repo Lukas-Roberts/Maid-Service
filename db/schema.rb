@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_10_24_222758) do
     t.string "city"
     t.string "state"
     t.string "experience"
+    t.integer "overall_rating"
+    t.integer "number_of_ratings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -8,10 +8,12 @@ class MaidsController < ApplicationController
 
     def create
         @maid = Maid.new(maid_params)
-        @account = Account.find(session[:account_id])
-        @account.accountable = @maid
-        if @account.save
-            redirect_to maid_path(@maid)
+        if @maid.save
+            @account = Account.find(session[:account_id])
+            @account.accountable = @maid
+            if @account.save
+                redirect_to maid_path(@maid)
+            end
         else
             render :new
         end
